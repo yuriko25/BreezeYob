@@ -1,0 +1,32 @@
+<?php 
+  session_start();
+  $pageName="products";
+  require_once("header.php");
+  require_once("serverCode/checklogin.php"); 
+?>
+<h1>Product List</h1>
+<?php
+  require_once("serverCode/connect.php");
+  $sql = "Select * FROM products;";
+
+  $result = $mysqli->query($sql);
+
+//Create a table to fill in
+  echo("<table border=1>");
+  echo("<tr><th>Image</th><th>Name</th><th>Product Description</th><th>Cost</th></tr>");
+  while($row = $result->fetch_assoc()) {
+//Jquerry associate number with the textbox for each product
+//dynamic on the fly
+///after is simpler 
+    $id = $row['productsID'];
+    echo("<tr>");
+    echo("<td>" . "<img src='images/" . $id . ".jpg'"	 . "</td>");
+    echo("<td>" . $row['productsName'] . 		"</td>");
+    echo("<td>" . $row['productsDesc'] . 		"</td>");
+    echo("<td>" . $row['productsCost'] . 		"</td>");
+	  echo("</tr>");
+    }
+  echo("</table>")
+?>
+
+<?php require_once("footer.php"); ?>
