@@ -1,0 +1,1 @@
+Select productsName AS 'Name', productsDesc AS 'Product Description', productsCost AS 'Cost', productsInv AS 'Inventory' FROM products;
